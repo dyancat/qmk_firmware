@@ -26,10 +26,10 @@ enum custom_keycodes {
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)    // Control (hold), Escape (tap)
 #define KC_BACK LGUI(KC_LEFT)           // Browser Back
 #define KC_FORW LGUI(KC_RIGHT)          // Browser Forward
-#define KC_LPTS S(KC_9)                 // Left parenthesis 
-#define KC_RPTS S(KC_0)                 // Right parenthesis 
-#define KC_LAGB S(KC_COMM)              // Left angle bracket 
-#define KC_RAGB S(KC_DOT)               // Right angle bracket 
+#define KC_LPTS S(KC_9)                 // Left parenthesis
+#define KC_RPTS S(KC_0)                 // Right parenthesis
+#define KC_LAGB S(KC_COMM)              // Left angle bracket
+#define KC_RAGB S(KC_DOT)               // Right angle bracket
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_RST RESET
@@ -45,13 +45,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      TAB ,QUOT,COMM,DOT , P  , Y  ,                F  , G  , C  , R  , L  ,SLSH,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      ESCC, A  , O  , E  , U  , I  ,                D  , H  , T  , N  , S  ,MINS,
-  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
+
      LSFT,SCLN, Q  , J  , K  , X  ,SPC ,     LALT, B  , M  , W  , V  , Z  ,DEL ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       LGUI,LALT,ENT ,         RASE,LOWR,SPC
+                       LGUI,LALT,RASE,         ENT ,LOWR,SPC
   //                  `----+----+----'        `----+----+----'
   ),
-  
+
   [_LOWER] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,                   ,    ,    ,LPTS,RPTS,    ,
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,    ,     RPRN,END ,    ,    ,    ,MINS,ENT ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       SPC ,    ,    ,             ,    ,   
+                       SPC ,    ,    ,             ,    ,
   //                  `----+----+----'        `----+----+----'
   ),
 
