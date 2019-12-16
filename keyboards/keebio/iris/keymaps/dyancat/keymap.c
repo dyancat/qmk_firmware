@@ -26,8 +26,10 @@ enum custom_keycodes {
 #define KC_ESCC MT(MOD_LCTL, KC_ESC)    // Control (hold), Escape (tap)
 #define KC_BACK LGUI(KC_LEFT)           // Browser Back
 #define KC_FORW LGUI(KC_RIGHT)          // Browser Forward
-#define KC_LPTS S(KC_9)              // Left parenthesis 
-#define KC_RPTS S(KC_0)              // Right parenthesis 
+#define KC_LPTS S(KC_9)                 // Left parenthesis 
+#define KC_RPTS S(KC_0)                 // Right parenthesis 
+#define KC_LAGB S(KC_COMM)              // Left angle bracket 
+#define KC_RAGB S(KC_DOT)               // Right angle bracket 
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_RST RESET
@@ -54,11 +56,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,                   ,    ,    ,LPTS,RPTS,    ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,LPTS,RPTS,    ,    ,                   ,SPC , UP ,LBRC,RBRC,BSLS,
+         ,    ,LAGB,RAGB,    ,    ,                   ,SPC , UP ,LBRC,RBRC,BSLS,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,               HOME,LEFT,DOWN,RGHT,EQL ,PLUS,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,    ,     RPRN,END ,    ,    ,    ,MINS,    ,
+         ,    ,    ,    ,    ,    ,    ,     RPRN,END ,    ,    ,    ,MINS,ENT ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                        SPC ,    ,    ,             ,    ,   
   //                  `----+----+----'        `----+----+----'
