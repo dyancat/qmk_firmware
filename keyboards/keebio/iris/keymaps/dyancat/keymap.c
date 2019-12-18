@@ -30,11 +30,16 @@ enum custom_keycodes {
 #define KC_RPTS S(KC_0)                 // Right parenthesis
 #define KC_LAGB S(KC_COMM)              // Left angle bracket
 #define KC_RAGB S(KC_DOT)               // Right angle bracket
+#define KC_LCLB S(KC_LBRC)              // Left angle bracket
+#define KC_RCLB S(KC_RBRC)              // Right angle bracket
 #define KC_LOWR LOWER
 #define KC_RASE RAISE
 #define KC_RST RESET
 #define KC_BL_S BL_STEP
 #define KC_ENTS MT(MOD_LSFT, KC_ENT)
+#define KC_FRMT A(S(KC_F))              // Format document
+#define KC_LCTE A(S(KC_L))              // Locate file
+#define KC_CNSL C(KC_GRV)               // Open console
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -45,8 +50,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      TAB ,QUOT,COMM,DOT , P  , Y  ,                F  , G  , C  , R  , L  ,SLSH,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      ESCC, A  , O  , E  , U  , I  ,                D  , H  , T  , N  , S  ,MINS,
-
-     LSFT,SCLN, Q  , J  , K  , X  ,SPC ,     LALT, B  , M  , W  , V  , Z  ,DEL ,
+  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
+     LSFT,SCLN, Q  , J  , K  , X  ,SPC ,     LALT, B  , M  , W  , V  , Z  ,RSFT,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                        LGUI,LALT,RASE,         ENT ,LOWR,SPC
   //                  `----+----+----'        `----+----+----'
@@ -54,13 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_kc(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-         ,    ,    ,    ,    ,    ,                   ,    ,    ,LPTS,RPTS,    ,
+     TILD,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,DEL ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
          ,    ,LAGB,RAGB,    ,    ,                   ,SPC , UP ,LBRC,RBRC,BSLS,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,               HOME,LEFT,DOWN,RGHT,EQL ,PLUS,
+         ,    ,LCLB,RCLB,PIPE,    ,               HOME,LEFT,DOWN,RGHT,PLUS,EQL ,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,    ,     RPRN,END ,    ,    ,    ,MINS,ENT ,
+         ,    ,    ,FRMT,LCTE,    ,    ,     RPRN,END ,    ,    ,    ,MINS,ENT ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
                        SPC ,    ,    ,             ,    ,
   //                  `----+----+----'        `----+----+----'
