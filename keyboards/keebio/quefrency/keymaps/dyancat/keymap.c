@@ -26,10 +26,10 @@ enum {
 };
 
 #define _BASE   0
+#define _QWERTY 1
 #define _FN1    2
 #define _MSE    3
-#define _MAC    4
-#define _BLANK  5
+#define _BLANK  9
 
 #define KC_FN1 MO(_FN1)
 #define KC_MSE MO(_MSE)
@@ -37,18 +37,12 @@ enum {
 #define KC_FRMT A(S(KC_F))              // Format document
 #define KC_LCTE A(S(KC_L))              // Locate file
 #define KC_SAVE C(KC_S)                 // Save
-#define KC_MVUP KC__VOLUP               // Mac volume up
-#define KC_MVDN KC__VOLDOWN             // Mac volume down
-#define KC_WMTE TD(TD_MUTE_VOLOS)       // Tap dance mute, os toggle
-#define KC_MMTE TD(TD_MAC_MUTE_VOLOS)   // Tap dance mac mute, os toggle
 
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   //Tap once for mute, twice to toggle volume controls between WIN/MAC
-  [TD_MUTE_VOLOS]  = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_MUTE, _MAC),
+  // [TD_MUTE_VOLOS]  = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_MUTE, _MAC),
 
-  //Tap once for mac mute, twice to toggle volume controls between WIN/MAC
-  [TD_MAC_MUTE_VOLOS]  = ACTION_TAP_DANCE_LAYER_TOGGLE(KC__MUTE, _MAC)
 // Other declarations would go here, separated by commas, if you have them
 };
 
@@ -67,7 +61,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        LSFT   ,SCLN, Q  , J  , K  , X  ,                B  , M  , W  , V  , Z  ,     RSFT    ,,
   //|---------+----+----+----+----+----+              +----+----+----+----+----+--------------|
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
-     LCTL ,LGUI ,LALT ,   SPC    , FN1 ,                FN1 ,  SPC  ,RALT ,VOLD,,VOLU ,WMTE
+     LCTL ,LGUI ,LALT ,   SPC    , FN1 ,                FN1 ,  SPC  ,RGUI ,VOLD,,VOLU , MUTE
+  //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
+  ),
+
+  [_QWERTY] = LAYOUT_kcq(
+  //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
+     GRV , 1  , 2  , 3  , 4  , 5  , 6  ,                7  , 8  , 9  , 0  ,MINS,EQL ,, BSPC   ,
+  //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
+  //|------+----+----+----+----+----+              +----+----+----+----+----+----+----+-------|
+      TAB  , Q  , W  , E  , R  , T  ,                Y  , U  , I  , O  , P  ,LBRC,RBRC ,  BSLS ,
+  //|------+----+----+----+----+----+              +----+----+----+----+----+----+----+-------|
+  //|-------+----+----+----+----+----+              +----+----+----+----+----+----+-----------|
+       ESC  , A  , S  , D  , F  , G  ,                H  , J  , K  , L  ,SCLN,QUOT,    ENT    ,
+  //|-------+----+----+----+----+----+              +----+----+----+----+----+----+-----------|
+  //|---------+----+----+----+----+----+              +----+----+----+----+----+--------------|
+       LSFT   , Z  , X  , C  , V  , B  ,                N  , M  ,COMM,DOT ,SLSH,     RSFT    ,,
+  //|---------+----+----+----+----+----+              +----+----+----+----+----+--------------|
+  //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
+     LCTL ,LGUI ,LALT ,   SPC    , FN1 ,                FN1 ,  SPC  ,RALT ,VOLD,,VOLU , MUTE
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
   ),
 
@@ -107,24 +119,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
   ),
 
-  [_MAC] = LAYOUT_kcq(
-  //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
-         ,    ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,,        ,
-  //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
-  //|------+----+----+----+----+----+              +----+----+----+----+----+----+----+-------|
-           ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,    ,       ,
-  //|------+----+----+----+----+----+              +----+----+----+----+----+----+----+-------|
-  //|-------+----+----+----+----+----+              +----+----+----+----+----+----+-----------|
-            ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,           ,
-  //|-------+----+----+----+----+----+              +----+----+----+----+----+----+-----------|
-  //|---------+----+----+----+----+----+              +----+----+----+----+----+--------------|
-              ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,             ,,
-  //|---------+----+----+----+----+----+              +----+----+----+----+----+--------------|
-  //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
-          ,     ,     ,          ,     ,                    ,       ,     ,MVDN,,MVUP , MMTE
-  //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
-  ),
-
   [_BLANK] = LAYOUT_kcq(
   //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
          ,    ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,,        ,
@@ -143,3 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
   )
 };
+
+void keyboard_post_init_user(void) {
+    set_unicode_input_mode(UC_OSX);
+}
