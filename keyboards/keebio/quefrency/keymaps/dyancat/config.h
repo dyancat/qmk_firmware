@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define COMBO_COUNT 0
 #define TAPPING_TERM 200
+#define MASTER_RIGHT
 
 #define MOUSEKEY_DELAY             0
 #define MOUSEKEY_INTERVAL          10

@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-// Used to create a keymap using only KC_ prefixed keys
+
 #define LAYOUT_kcq( \
     LA1, LA2, LA3, LA4, LA5, LA6, LA7, RA1, RA2, RA3, RA4, RA5, RA6, RA7, RA8, \
     LB1, LB2, LB3, LB4, LB5, LB6,      RB1, RB2, RB3, RB4, RB5, RB6, RB7, RB8, \
@@ -20,11 +20,6 @@ enum custom_keycodes {
   QWERTY = SAFE_RANGE,
 };
 
-enum {
-  TD_MUTE_VOLOS = 0,
-  TD_MAC_MUTE_VOLOS
-};
-
 #define _BASE   0
 #define _QWERTY 1
 #define _FN1    2
@@ -37,14 +32,6 @@ enum {
 #define KC_FRMT A(S(KC_F))              // Format document
 #define KC_LCTE A(S(KC_L))              // Locate file
 #define KC_SAVE C(KC_S)                 // Save
-
-//Tap Dance Definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for mute, twice to toggle volume controls between WIN/MAC
-  // [TD_MUTE_VOLOS]  = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_MUTE, _MAC),
-
-// Other declarations would go here, separated by commas, if you have them
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_kcq(
@@ -117,8 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
           ,     ,     ,          ,     ,                    ,       ,     ,    ,,     ,
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
-  ),
+  )
 
+/*
   [_BLANK] = LAYOUT_kcq(
   //|----+----+----+----+----+----+----+              +----+----+----+----+----+----+---------|
          ,    ,    ,    ,    ,    ,    ,                   ,    ,    ,    ,    ,    ,,        ,
@@ -136,8 +124,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           ,     ,     ,          ,     ,                    ,       ,     ,    ,,     ,
   //|-----+-----+-----+----------+-----+              +-----+-------+-----+-----+-----+-------|
   )
+*/
 };
 
-void keyboard_post_init_user(void) {
-    set_unicode_input_mode(UC_OSX);
-}
