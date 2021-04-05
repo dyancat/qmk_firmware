@@ -27,9 +27,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_COUNT 0
 #define TAPPING_TERM 200
 
-#define MOUSEKEY_DELAY             0
+#define MOUSEKEY_DELAY             10
 #define MOUSEKEY_INTERVAL          10
 #define MOUSEKEY_MAX_SPEED         3
-#define MOUSEKEY_TIME_TO_MAX       100
+#define MOUSEKEY_TIME_TO_MAX       40
 
 // #define USE_I2C
