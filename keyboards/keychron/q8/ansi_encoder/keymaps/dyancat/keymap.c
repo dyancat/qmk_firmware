@@ -25,8 +25,12 @@ enum layers{
     MAC_BASE, // QWERTY
     WIN_BASE, // DVORAK
     _FN1,
-    _FN2,
-    _FN3
+    _FN2
+};
+
+//Tap Dance Declarations
+enum {
+  TD_F18_F19 = 0
 };
 
 #define KC_CESC MT(MOD_LCTL, KC_ESC) // ESC or Ctrl
@@ -34,11 +38,6 @@ enum layers{
 #define KC_SLFT C(S(KC_LEFT)) // Ctrl+Shift+Left
 #define KC_SRGT C(S(KC_RGHT)) // Ctrl+Shift+Right
 #define TD_F189 TD(TD_F18_F19)
-
-//Tap Dance Declarations
-enum {
-  TD_F18_F19 = 0
-};
 
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
@@ -62,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN1] = LAYOUT_ansi_69(
         _______, KC_F1,    KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,   KC_DEL,           _______,
-        _______, _______,  KC_HOME,  KC_UP,   KC_END,  _______, _______,  _______, KC_HOME, KC_UP,   KC_END,   _______,  _______,  _______,          _______,
+        _______, _______,  KC_HOME,  KC_UP,   KC_END,  _______, _______,  KC_HOME, KC_UP,   KC_END,  _______,  _______,  _______,  _______,          _______,
         _______, KC_SLFT,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_SRGT,           _______, KC_LEFT, KC_DOWN, KC_RGHT,  _______,  _______,  _______,          _______,
         _______,           _______,  _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______,  _______, _______,
         _______, _______,  _______,           _______,          _______,  _______,          _______,           _______,            _______, _______, _______),
@@ -72,14 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,  _______,  _______, _______, _______, _______,  _______, _______, KC_HOME, KC_UP,    KC_END,   _______,  _______,          _______,
         _______, _______,  _______,  _______, _______, _______,           _______, _______, _______, KC_LEFT,  KC_DOWN,  KC_RGHT,  _______,          _______,
         _______,           _______,  _______, _______, _______, _______,  QK_BOOT, _______, _______, _______,  _______,  _______,  _______, RGB_MOD,
-        _______, _______,  _______,           _______,          _______,  _______,          _______,           _______,            RGB_VAD, RGB_TOG, RGB_VAI),
-
-    [_FN3] = LAYOUT_ansi_69(
-        _______, _______,  _______,  _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______,  _______,          _______,
-        _______, _______,  _______,  _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______,  _______,          _______,
-        _______, _______,  _______,  _______, _______, _______,           _______, _______, _______, _______,  _______,  _______,  _______,          _______,
-        _______,           _______,  _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______,  _______, _______,
-        _______, _______,  _______,           _______,          _______,  _______,          _______,           _______,            _______, _______, _______),
+        _______, _______,  _______,           _______,          _______,  _______,          _______,           _______,            RGB_VAD, RGB_TOG, RGB_VAI)
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -88,10 +80,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [WIN_BASE] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [_FN1]   = {ENCODER_CCW_CW(KC_LEFT, KC_RGHT)},
     [_FN2]   = {ENCODER_CCW_CW(KC_WH_U, KC_WH_D)},
-    [_FN3]   = {ENCODER_CCW_CW(_______, _______)}
 };
 #endif // ENCODER_MAP_ENABLE
-
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
