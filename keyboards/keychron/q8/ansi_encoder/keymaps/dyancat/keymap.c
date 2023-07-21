@@ -35,8 +35,8 @@ enum {
 
 #define KC_CESC MT(MOD_LCTL, KC_ESC) // ESC or Ctrl
 #define KC_SFN1 LT(_FN1, KC_SPC) // Space or Layer 1
-#define KC_SLFT C(S(KC_LEFT)) // Ctrl+Shift+Left
-#define KC_SRGT C(S(KC_RGHT)) // Ctrl+Shift+Right
+#define KC_SLFT C(KC_LEFT) // Ctrl+Left
+#define KC_SRGT C(KC_RGHT) // Ctrl+Right
 #define TD_F189 TD(TD_F18_F19)
 
 //Tap Dance Definitions
@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN1] = LAYOUT_ansi_69(
         _______, KC_F1,    KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,   KC_DEL,           _______,
-        _______, _______,  KC_HOME,  KC_UP,   KC_END,  _______, _______,  KC_HOME, KC_UP,   KC_END,  _______,  _______,  _______,  _______,          _______,
-        _______, KC_SLFT,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_SRGT,           _______, KC_LEFT, KC_DOWN, KC_RGHT,  _______,  _______,  _______,          _______,
+        _______, _______,  KC_HOME,  KC_UP,   KC_END,  _______, KC_HOME,  KC_UP,   KC_END, _______,  _______,  _______,  _______,  _______,          _______,
+        _______, KC_SLFT,  KC_LEFT,  KC_DOWN, KC_RGHT, KC_SRGT,           KC_LEFT, KC_DOWN, KC_RGHT, _______,  _______,  _______,  _______,          _______,
         _______,           _______,  _______, _______, _______, _______,  _______, _______, _______, _______,  _______,  _______,  _______, _______,
         _______, _______,  _______,           _______,          _______,  _______,          _______,           _______,            _______, _______, _______),
 
